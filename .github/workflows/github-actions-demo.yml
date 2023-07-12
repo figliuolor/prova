@@ -2,8 +2,9 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Build:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -14,10 +15,15 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          ls -la ${{ github.workspace }}
+          ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Second-Explore-GitHub-Actions:
+  Test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Second Job is starting"
-      - run: echo "Second Job done"      
+      - run : echo "Second job is starting"
+      - run : echo "Second job done"
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Second job is starting"
+      - run: echo "Second job done"
